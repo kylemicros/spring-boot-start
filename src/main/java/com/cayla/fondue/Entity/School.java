@@ -1,4 +1,4 @@
-package com.cayla.fondue.Entity;
+package com.cayla.fondue.entity;
 
 import java.util.List;
 

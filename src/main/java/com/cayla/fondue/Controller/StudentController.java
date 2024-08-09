@@ -1,8 +1,8 @@
-package com.cayla.fondue.Controller;
+package com.cayla.fondue.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cayla.fondue.Entity.Student;
+import com.cayla.fondue.entity.Student;
 import com.cayla.fondue.repository.StudentRepository;
 
 import lombok.RequiredArgsConstructor;

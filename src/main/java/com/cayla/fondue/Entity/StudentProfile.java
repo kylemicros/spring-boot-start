@@ -1,4 +1,4 @@
-package com.cayla.fondue.Entity;
+package com.cayla.fondue.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
