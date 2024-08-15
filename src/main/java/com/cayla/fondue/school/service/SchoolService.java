@@ -46,4 +46,8 @@ public class SchoolService {
     public School findSchoolById(@PathVariable("id") Long id) {
         return schoolRepository.findById(id).orElse(null);
     }
+
+    public void deleteSchool(@PathVariable("id") Long id) {
+        schoolRepository.deleteById(id);
+    }
 }

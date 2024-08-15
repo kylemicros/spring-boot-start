@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,5 +34,10 @@ public class SchoolController {
     @GetMapping("/schools/{id}")
     public School findSchoolById(@PathVariable("id") Long id) {
         return schoolService.findSchoolById(id);
+    }
+
+    @DeleteMapping("/schools/{id}")
+    public void deleteSchoolById(@PathVariable("id") Long id) {
+        schoolService.deleteSchool(id);
     }
 }
