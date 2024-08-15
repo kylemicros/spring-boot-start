@@ -18,7 +18,7 @@ public class SchoolService {
     private final SchoolRepository schoolRepository;
     private final SchoolMapperService schoolMapperService;
 
-    public SchoolDto post(SchoolDto schoolDto) {
+    public SchoolDto saveSchool(SchoolDto schoolDto) {
         School school = schoolMapperService.createSchool(schoolDto);
 
         schoolRepository.save(school);

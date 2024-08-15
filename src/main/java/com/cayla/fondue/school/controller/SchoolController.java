@@ -6,6 +6,7 @@ import com.cayla.fondue.school.dto.SchoolDto;
 import com.cayla.fondue.school.entity.School;
 import com.cayla.fondue.school.service.SchoolService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -15,28 +16,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/schools")
 public class SchoolController {
     private final SchoolService schoolService;
 
-    @PostMapping("/schools")
-    public SchoolDto post(@RequestBody SchoolDto schoolDto) {
-        return this.schoolService.post(schoolDto);
+    @PostMapping
+    public SchoolDto post(@Valid @RequestBody SchoolDto schoolDto) {
+        return this.schoolService.saveSchool(schoolDto);
     }
 
-    @GetMapping("/schools")
+    @GetMapping
     public List<SchoolDto> getAllSchools() {
         return schoolService.getAllSchools();
     }
 
-    @GetMapping("/schools/{id}")
+    @GetMapping("/{id}")
     public School findSchoolById(@PathVariable("id") Long id) {
         return schoolService.findSchoolById(id);
     }
 
-    @DeleteMapping("/schools/{id}")
+    @DeleteMapping("/{id}")
     public void deleteSchoolById(@PathVariable("id") Long id) {
         schoolService.deleteSchool(id);
     }

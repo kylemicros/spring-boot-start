@@ -20,39 +20,41 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/students")
 public class StudentController {
     private final StudentService studentService;
 
-    @GetMapping("/students")
+    @GetMapping
     public List<StudentResponseDto> getAllStudents() {
         return studentService.getAllStudents();
     }
 
-    @PostMapping("/students")
+    @PostMapping
     public StudentResponseDto saveStudent(
             @Valid @RequestBody StudentDto studentDto) {
         return this.studentService.saveStudent(studentDto);
     }
 
-    @DeleteMapping("/students/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteStudent(
             @PathVariable("id") Long id) {
         studentService.deleteStudent(id);
     }
 
-    @GetMapping("/students/{id}")
+    @GetMapping("/{id}")
     public StudentResponseDto getStudentById(
             @PathVariable("id") Long id) {
         return studentService.findById(id);
 
     }
 
-    @GetMapping("/students/search/{student-name}")
+    @GetMapping("/search/{student-name}")
     public List<StudentResponseDto> findStudentByName(
             @PathVariable("student-name") String name) {
         return studentService.findAllByFirstNameContaining(name);
