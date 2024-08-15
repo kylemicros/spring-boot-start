@@ -19,3 +19,24 @@ What things you need to install the software and how to install them
 * GitHub
 * Postman
 * PostgreSQL
+
+This introduces the basics including the use of annotations, Spring Boot, and Spring Data JPA. 
+
+The following annotations are used:
+* `@SpringBootApplication`
+* `@Entity`
+* `@Id`
+* `@GeneratedValue`
+* `@Table`
+* `@Column`
+* `@OneToMany`
+* `@ManyToOne`
+* `@JoinColumn`
+* `@JoinTable`
+* `@Query`
+* `@PostConstruct`
+* `@Autowired`
+* `@Value`
+* `@Component`
+* `@Service`
+* `@Repository`
