@@ -1,8 +1,8 @@
-package com.cayla.fondue.repository;
+package com.cayla.fondue.school.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.cayla.fondue.entity.School;
+import com.cayla.fondue.school.entity.School;
 
 public interface SchoolRepository extends JpaRepository<School, Long> {
 

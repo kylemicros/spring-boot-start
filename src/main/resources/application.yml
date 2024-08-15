@@ -2,9 +2,9 @@ spring:
   application:
     name: fondue
   datasource:
-    url: jdbc:postgresql://localhost:5432/demo_db
-    username: postgres
-    password: moreno
+    url: jdbc:postgresql://localhost:5432/student_db
+    username: fondue
+    password: password
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:

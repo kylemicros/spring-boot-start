@@ -1,4 +1,6 @@
-package com.cayla.fondue.entity;
+package com.cayla.fondue.studentprofile.entity;
+
+import com.cayla.fondue.student.entity.Student;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
