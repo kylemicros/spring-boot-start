@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.cayla.fondue.school.dto.SchoolDto;
 import com.cayla.fondue.school.entity.School;
 import com.cayla.fondue.school.repository.SchoolRepository;
+import com.cayla.fondue.school.service.exception.ResourceNotFoundException;
 
 import lombok.RequiredArgsConstructor;
 
@@ -49,5 +50,19 @@ public class SchoolService {
 
     public void deleteSchool(@PathVariable("id") Long id) {
         schoolRepository.deleteById(id);
+    }
+
+    public List<SchoolDto> findSchoolByName(String name) {
+        return schoolRepository.findBySchoolName(name).stream().map(schoolMapperService::getSchoolDto)
+                .collect(Collectors.toList());
+    }
+
+    public School updateSchool(Long id, School school) {
+        School schoolToUpdate = schoolRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("School not found"));
+        schoolToUpdate.setSchoolName(school.getSchoolName());
+        schoolToUpdate.setAddress(school.getAddress());
+        schoolRepository.save(schoolToUpdate);
+        return schoolToUpdate;
     }
 }
