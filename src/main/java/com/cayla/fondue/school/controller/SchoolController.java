@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequiredArgsConstructor
@@ -37,6 +39,16 @@ public class SchoolController {
     @GetMapping("/{id}")
     public School findSchoolById(@PathVariable("id") Long id) {
         return schoolService.findSchoolById(id);
+    }
+
+    @GetMapping("/search")
+    public List<SchoolDto> findSchoolByName(@RequestParam("name") String name) {
+        return schoolService.findSchoolByName(name);
+    }
+
+    @PutMapping("/{id}")
+    public School updateSchool(@PathVariable("id") Long id, @Valid @RequestBody School school) {
+        return schoolService.updateSchool(id, school);
     }
 
     @DeleteMapping("/{id}")
