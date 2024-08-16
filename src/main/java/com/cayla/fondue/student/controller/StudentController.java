@@ -8,11 +8,14 @@ import com.cayla.fondue.student.service.StudentService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.var;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -61,9 +64,20 @@ public class StudentController {
 
     }
 
+    // This is a custom exception handler that will catch
+    // MethodArgumentNotValidException
+    // and return a map of errors in the response body.
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<?> handleValidationException(
+    public ResponseEntity<?> handleMethodArgumentNotValidException(
             MethodArgumentNotValidException exc) {
-        return ResponseEntity.badRequest().body(exc.getBindingResult().getAllErrors());
+        var errors = new HashMap<String, String>();
+        exc.getBindingResult().getAllErrors().forEach(error -> {
+            var fieldName = ((FieldError) error).getField();
+            var errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+
     }
 }
