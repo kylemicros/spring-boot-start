@@ -42,4 +42,10 @@ public class StudentService {
                 .map(studentMapperService::createStudentResponseDto)
                 .collect(Collectors.toList());
     }
+
+    public List<StudentResponseDto> findAllByLastNameContaining(String lastName) {
+        return studentRepository.findAllByLastNameContaining(lastName).stream()
+                .map(studentMapperService::createStudentResponseDto)
+                .collect(Collectors.toList());
+    }
 }

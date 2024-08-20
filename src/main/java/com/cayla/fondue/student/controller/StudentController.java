@@ -8,7 +8,6 @@ import com.cayla.fondue.student.service.StudentService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import lombok.var;
 
 import java.util.HashMap;
 import java.util.List;
@@ -61,6 +60,13 @@ public class StudentController {
     public List<StudentResponseDto> findStudentByName(
             @PathVariable("student-name") String name) {
         return studentService.findAllByFirstNameContaining(name);
+
+    }
+
+    @GetMapping("/search/{student-last-name}")
+    public List<StudentResponseDto> findStudentByLastName(
+            @PathVariable("student-last-name") String lastName) {
+        return studentService.findAllByLastNameContaining(lastName);
 
     }
 
