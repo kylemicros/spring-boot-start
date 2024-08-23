@@ -1,5 +1,9 @@
 "# spring-boot-start" 
 
+## UPDATE:
+* The application.yml file is now set to use the configuration from the .env file.
+* To make this work, the .env file needs to be in the root directory of the project.
+
 This is my initial journey in learning Spring Boot. 
 
 ## Getting Started
